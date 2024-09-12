@@ -1,24 +1,26 @@
 #!/bin/bash
 
-# 1. Membuat Virtual Environment
-echo "Creating virtual environment..."
-python3 -m venv venv
+# Ambil direktori saat ini
+CURRENT_DIR=$(pwd)
 
-# Aktivasi virtual environment
-source venv/bin/activate
+# 1. Membuat Virtual Environment di direktori saat ini
+echo "Creating virtual environment in $CURRENT_DIR/venv..."
+python3 -m venv "$CURRENT_DIR/venv"
 
-# 2. Install dependensi dari requirements.txt
-echo "Installing dependencies..."
-pip install -r requirements.txt
+# 2. Aktivasi virtual environment
+source "$CURRENT_DIR/venv/bin/activate"
 
-# 3. Mengatur nama sesi server berdasarkan user Linux
+# 3. Install dependensi dari requirements.txt
+echo "Installing dependencies from requirements.txt..."
+pip install -r "$CURRENT_DIR/requirements.txt"
+
+# 4. Mengatur nama sesi server berdasarkan user Linux
 SERVER_NAME=$(whoami)
 echo "Server name is set to: $SERVER_NAME"
 
-# Menyimpan nama server di dalam file environment (.env)
-echo "SERVER_NAME=\"$SERVER_NAME\"" > .env
+# Simpan nama server di dalam file environment (.env) di direktori saat ini
+echo "SERVER_NAME=\"$SERVER_NAME\"" > "$CURRENT_DIR/.env"
 
-# 4. Menjalankan script btc.py
-echo "Running btc.py..."
-python btc.py
- 
+# 5. Menjalankan script btc.py di direktori saat ini
+echo "Running btc.py in $CURRENT_DIR..."
+python "$CURRENT_DIR/btc.py"
