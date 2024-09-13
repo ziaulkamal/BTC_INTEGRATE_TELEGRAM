@@ -106,11 +106,11 @@ async def main():
                 # Kirim ke Telegram
                 await send_telegram_message(file_info)
 
-        # Kirim update ke Telegram setiap sesi selesai
-        session_summary = f"[{SERVER_NAME}]\nSession #{counter} complete.\nFound: {found_counter}\n429 Errors: {rate_limit_counter['429']}"
-        await send_telegram_message(session_summary)
+        # # Kirim update ke Telegram setiap sesi selesai
+        # session_summary = f"[{SERVER_NAME}]\nSession #{counter} complete.\nFound: {found_counter}\n429 Errors: {rate_limit_counter['429']}"
+        # await send_telegram_message(session_summary)
 
-        await asyncio.sleep(5)  # Tunggu 5 detik sebelum melanjutkan ke batch berikutnya
+        await asyncio.sleep(3)  # Tunggu 5 detik sebelum melanjutkan ke batch berikutnya
 
 # Menjalankan program utama
 asyncio.run(main())
